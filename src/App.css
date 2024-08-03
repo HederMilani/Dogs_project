@@ -7,9 +7,9 @@ body {
     --type-second: 'Spectral', Georgia;
     font-family: var(--type-first);
     margin: 0px;
-    padding: 0px;
     background-color: #f0f0f0;
     color: #333;
+    padding: 4rem 0px 0px;
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -20,6 +20,10 @@ ul, li {
     list-style: none;
     padding: 0px;
     margin: 0px;
+}
+
+a {
+    text-decoration: none;
 }
 
 img {

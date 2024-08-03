@@ -1,25 +1,20 @@
 import React from "react";
+import { Link, NavLink } from "react-router-dom";
 import styles from "./Header.module.css";
-import { NavLink } from "react-router-dom";
+import Dog from "../Assets/dogs.svg?react";
 
 const Header = () => {
   return (
-    <div className={styles.header}>
-      <nav>
-        <ul>
-          <li>
-            <NavLink to="/" activeClassName={styles.active} end>
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/login" activeClassName={styles.active}>
-              Login / Criar
-            </NavLink>
-          </li>
-        </ul>
+    <header className={styles.header}>
+      <nav className={`${styles.nav} container`}>
+        <Link to="/" className={styles.logo} aria-label="Dogs | Home">
+          <Dog />
+        </Link>
+        <Link to="/login" className={styles.login}>
+          Login / Criar
+        </Link>
       </nav>
-    </div>
+    </header>
   );
 };
 
