@@ -1,5 +1,7 @@
 import React from "react";
 import styles from "./LoginForm.module.css";
+import Input from "../Form/Input.jsx";
+import Button from "../Form/Button.jsx";
 
 const LoginForm = () => {
   const [username, setUsername] = React.useState("");
@@ -26,23 +28,9 @@ const LoginForm = () => {
     <section>
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Usuário:</label>
-        <input
-          type="text"
-          id="username"
-          name="username"
-          value={username}
-          onChange={({ target }) => setUsername(target.value)}
-        />
-        <label htmlFor="password">Senha:</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          value={password}
-          onChange={({ target }) => setPassword(target.value)}
-        />
-        <button>Entrar</button>
+        <Input label="Usuário" type="text" name="username" />
+        <Input label="Senha" type="password" name="password" />
+        <Button>Entrar</Button>
       </form>
     </section>
   );
