@@ -6,6 +6,7 @@ import Header from "./Components/Header.jsx";
 import Footer from "./Components/Footer.jsx";
 import Login from "./Components/Login/Login.jsx";
 import { UserStorage } from "./UserContext.jsx";
+import Conta from "./Components/Conta/Conta.jsx";
 
 function App() {
   return (
@@ -16,6 +17,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login/*" element={<Login />} />
+            <Route path="/conta/*" element={<Conta />} />
+            <Route path="*" element={<h1>Not Found</h1>} />
           </Routes>
           <Footer />
         </UserStorage>
