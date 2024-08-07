@@ -12,13 +12,15 @@ const Login = () => {
 
   if (login === true) return <Navigate to={"/conta"} />;
   return (
-    <section>
-      <Routes>
-        <Route path="/" element={<LoginForm />} />
-        <Route path="create" element={<LoginCreate />} />
-        <Route path="lost" element={<LoginPasswordLost />} />
-        <Route path="reset" element={<LoginPasswordReset />} />
-      </Routes>
+    <section className={styles.login}>
+      <div className={styles.forms}>
+        <Routes>
+          <Route path="/" element={<LoginForm />} />
+          <Route path="create" element={<LoginCreate />} />
+          <Route path="lost" element={<LoginPasswordLost />} />
+          <Route path="reset" element={<LoginPasswordReset />} />
+        </Routes>
+      </div>
     </section>
   );
 };
