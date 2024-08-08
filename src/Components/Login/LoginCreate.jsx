@@ -5,6 +5,8 @@ import Input from "../Form/Input.jsx";
 import Button from "../Form/Button.jsx";
 import { USER_POST } from "../../api.js";
 import { UserContext } from "../../UserContext.jsx";
+import useFetch from "../../Hooks/useFetch.jsx";
+import Error from "../../Helper/Error.jsx";
 
 const LoginCreate = () => {
   const username = useForm();
@@ -12,26 +14,19 @@ const LoginCreate = () => {
   const password = useForm();
 
   const { userLogin } = useContext(UserContext);
+  const { loading, error, request } = useFetch();
 
   async function handleSubmit(event) {
     event.preventDefault();
     if (username.validate() && email.validate() && password.validate()) {
-      try {
-        const { url, options } = USER_POST({
-          username: username.value,
-          email: email.value,
-          password: password.value,
-        });
-        const response = await fetch(url, options);
-        if (!response.ok) throw new Error(`Error: ${response}`);
-        userLogin(username.value, password.value);
-      } catch (e) {
-        console.log(e.message);
-      } finally {
-        console.log("finally");
-      }
+      const { url, options } = USER_POST({
+        username: username.value,
+        email: email.value,
+        password: password.value,
+      });
+      const response = await request(url, options);
+      if (response.ok) userLogin(username.value, password.value);
     }
-    console.log("");
   }
   return (
     <section className="animeLeft">
@@ -40,7 +35,12 @@ const LoginCreate = () => {
         <Input label="Usuário" type="text" name="username" {...username} />
         <Input label="Email" type="email" name="email" {...email} />
         <Input label="Senha" type="password" name="password" {...password} />
-        <Button>Cadastrar</Button>
+        {loading ? (
+          <Button disabled>Carregando...</Button>
+        ) : (
+          <Button>Cadastrar</Button>
+        )}
+        <Error error={error} />
       </form>
     </section>
   );
