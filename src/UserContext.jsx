@@ -17,8 +17,7 @@ export const UserStorage = ({ children }) => {
     setError(null);
     setLoading(false);
     window.localStorage.removeItem("token");
-    navigate("/login");
-  }, [navigate]);
+  }, []);
 
   React.useEffect(() => {
     async function autoLogin() {
@@ -50,6 +49,7 @@ export const UserStorage = ({ children }) => {
       setError(null);
       const { url, options } = TOKEN_POST({ username, password });
       const tokenRes = await fetch(url, options);
+      //console.log(tokenRes);
       if (!tokenRes.ok) throw new Error(`Error: ${tokenRes.statusText}`);
       const { token } = await tokenRes.json();
       window.localStorage.setItem("token", token);
