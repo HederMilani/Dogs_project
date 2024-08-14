@@ -53,6 +53,10 @@ button, input {
     padding: 0 1rem;
 }
 
+.mainContainer {
+    margin-top: 4rem;
+}
+
 .animeLeft {
     opacity: 0;
     transform: translateX(-20px);
