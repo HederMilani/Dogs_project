@@ -9,7 +9,7 @@ import PhotoContent from "../Photo/PhotoContent.jsx";
 const FeedModal = ({ photo, setModalPhoto }) => {
   const { data, error, loading, request } = useFetch();
 
-  React.useEffect(async () => {
+  React.useEffect(() => {
     const { url, options } = PHOTO_GET(photo.id);
     request(url, options);
   }, [photo, request]);
