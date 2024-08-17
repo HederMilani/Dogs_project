@@ -6,9 +6,15 @@ import PhotoCommentsForm from "./PhotoCommentsForm.jsx";
 const PhotoComments = ({ id, comments }) => {
   const { login } = React.useContext(UserContext);
   const [commentsList, setCommentsList] = React.useState(() => comments);
+  const commentsSection = React.useRef(null);
+
+  React.useEffect(() => {
+    commentsSection.current.scrollTop = commentsSection.current.scrollHeight;
+  }, [commentsList]);
+
   return (
     <div>
-      <ul style={styles.comments}>
+      <ul ref={commentsSection} className={styles.comments}>
         {commentsList.map((comment) => (
           <li key={comment.comment_ID}>
             <b>{comment.comment_author}: </b>
