@@ -9,6 +9,7 @@ import { UserStorage } from "./UserContext.jsx";
 import Conta from "./Components/Conta/Conta.jsx";
 import ProtectedRouter from "./Helper/ProtectedRouter.jsx";
 import Photo from "./Components/Photo/Photo.jsx";
+import UserProfile from "./Components/Conta/UserProfile.jsx";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
               }
             />
             <Route path="photo/:id" element={<Photo />} />
+            <Route path="/profile/:user" element={<UserProfile />} />
             <Route path="*" element={<h1>Not Found</h1>} />
           </Routes>
           <Footer />
