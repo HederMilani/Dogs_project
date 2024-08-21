@@ -8,6 +8,7 @@ import Login from "./Components/Login/Login.jsx";
 import { UserStorage } from "./UserContext.jsx";
 import Conta from "./Components/Conta/Conta.jsx";
 import ProtectedRouter from "./Helper/ProtectedRouter.jsx";
+import Photo from "./Components/Photo/Photo.jsx";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
                 </ProtectedRouter>
               }
             />
+            <Route path="photo/:id" element={<Photo />} />
             <Route path="*" element={<h1>Not Found</h1>} />
           </Routes>
           <Footer />
