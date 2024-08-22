@@ -7,6 +7,7 @@ import LoginPasswordLost from "./LoginPasswordLost.jsx";
 import LoginPasswordReset from "./LoginPasswordReset.jsx";
 import { UserContext } from "../../UserContext.jsx";
 import NotFound from "../../NotFound.jsx";
+import Head from "../../Helper/Head.jsx";
 
 const Login = () => {
   const { login } = React.useContext(UserContext);
@@ -14,6 +15,7 @@ const Login = () => {
   if (login === true) return <Navigate to={"/conta"} />;
   return (
     <section className={styles.login}>
+      <Head title="Login" description="Tela de login do site Dogs." />
       <div className={styles.forms}>
         <Routes>
           <Route path="/" element={<LoginForm />} />
