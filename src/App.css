@@ -91,3 +91,13 @@ button, input {
     border-radius: 0.2rem;
     z-index: -1;
 }
+
+.App {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh + 10rem);
+}
+
+.AppBody {
+    flex: 1;
+}
