@@ -1,35 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./App.css";
+import Home from "./Components/Home.jsx";
+import Header from "./Components/Header.jsx";
+import Footer from "./Components/Footer.jsx";
+import Login from "./Components/Login/Login.jsx";
+import { UserStorage } from "./UserContext.jsx";
+import Conta from "./Components/Conta/Conta.jsx";
+import ProtectedRouter from "./Helper/ProtectedRouter.jsx";
+import Photo from "./Components/Photo/Photo.jsx";
+import UserProfile from "./Components/Conta/UserProfile.jsx";
+import NotFound from "./NotFound.jsx";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="App">
+      <BrowserRouter>
+        <UserStorage>
+          <Header />
+          <main className="AppBody">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login/*" element={<Login />} />
+              <Route
+                path="/conta/*"
+                element={
+                  <ProtectedRouter>
+                    <Conta />
+                  </ProtectedRouter>
+                }
+              />
+              <Route path="photo/:id" element={<Photo />} />
+              <Route path="/profile/:user" element={<UserProfile />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </main>
+          <Footer />
+        </UserStorage>
+      </BrowserRouter>
+    </div>
+  );
 }
 
-export default App
+export default App;

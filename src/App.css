@@ -1,42 +1,107 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+* {
+    box-sizing: border-box;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+body {
+    --type-first: Helvetica, Arial, sans-serif;
+    --type-second: 'Spectral', Georgia;
+    font-family: var(--type-first);
+    margin: 0px;
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 4rem 0px 0px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+ul, li {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
 }
 
-.card {
-  padding: 2em;
+a {
+    text-decoration: none;
+    color: #333;
 }
 
-.read-the-docs {
-  color: #888;
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+button, input {
+    display: block;
+    font-family: var(--type-first);
+    font-size: 1rem;
+    color: #333;
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.container {
+    max-width: 50rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.mainContainer {
+    margin-top: 2rem;
+}
+
+.animeLeft {
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: animeLeft 0.3s forwards;
+}
+
+@keyframes animeLeft {
+    to {
+        opacity: 1;
+        transform: initial;
+    }
+}
+
+.title {
+    margin: 1rem 0;
+    font-family: var(--type-second);
+    font-size: 3rem;
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.title::after {
+    content: '';
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: #fb1;
+    position: absolute;
+    bottom: 5px;
+    left: -5px;
+    border-radius: 0.2rem;
+    z-index: -1;
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh + 10rem);
+}
+
+.AppBody {
+    flex: 1;
+}
+
+.VictoryContainer {
+    height: initial !important;
 }
